@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://dl0m4xv571bbf"]
+
+[ext_resource type="PackedScene" uid="uid://cedx87ev38j60" path="res://sketchfab_scene.tscn" id="1_6qril"]
+[ext_resource type="PackedScene" uid="uid://bsxpsdwqhg65l" path="res://stark_crafts_alt_girl_with_textures_for_sketchfab.tscn" id="2_qcbwe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fubtr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_v6dk7"]
+
+[node name="livello-demo" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.907777, 0.419452, 0, -0.419452, 0.907777, 0.18897, 2.21432, 1.38408)
+fov = 65.8313
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.979404, 2.14205, -0.693615)
+light_color = Color(0.713726, 0.427451, 0.67451, 1)
+light_energy = 1.969
+light_indirect_energy = 2.939
+light_volumetric_fog_energy = 2.455
+light_size = 0.1
+light_specular = 0.0
+shadow_enabled = true
+shadow_bias = 0.302
+omni_range = 1.83447
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_6qril")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.6007)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_fubtr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_v6dk7")
+skeleton = NodePath("../..")
+
+[node name="StarkCrafts Alt Girl With Textures For Sketchfab" parent="." instance=ExtResource("2_qcbwe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00239563, 0, -1.32952)
